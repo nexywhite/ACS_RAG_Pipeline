@@ -33,65 +33,65 @@ Architecture:
 PDF/Text/Image → Text Extraction → Chunking → Embeddings → ChromaDB → Retriever → LLM → Answer
 
 Project Structure:
-RAG_Chatbot.py          –    Streamlit UI
-rag_query.py            –    CLI test
-index_documents.py      –    Build vector DB
-preprocess_loaders.py   –    PDF/Text/Image loaders + OCR + chunker
-requirements.txt        –    Dependencies
-chroma_db/              –    Generated vector DB
-data/                   –    Knowledge base files
+- RAG_Chatbot.py          –    Streamlit UI
+- rag_query.py            –    CLI test
+- index_documents.py      –    Build vector DB
+- preprocess_loaders.py   –    PDF/Text/Image loaders + OCR + chunker
+- requirements.txt        –    Dependencies
+- chroma_db/              –    Generated vector DB
+- data/                   –    Knowledge base files
 
 Installation:
 1. Clone repository:
-   git clone <your-repo-url>
-   cd ACS_RAG_Pipeline
+   - git clone <your-repo-url>
+   - cd ACS_RAG_Pipeline
    
 2. Create virtual environment and activate it:
-   python -m venv .venv
-   .\.venv\Scripts\activate   # Windows
-   source .venv/bin/activate  # Mac/Linux
+   - python -m venv .venv
+   - .\.venv\Scripts\activate   # Windows
+   - source .venv/bin/activate  # Mac/Linux
 
 3. Install dependencies:
-   pip install -r requirements.txt
+   - pip install -r requirements.txt
 
 4. Install Tesseract OCR (separate):
-   https://github.com/UB-Mannheim/tesseract/wiki   # Windows
-   brew install tesseract                          # Mac
-   sudo apt install tesseract-ocr                  # Linux
+   - https://github.com/UB-Mannheim/tesseract/wiki   # Windows
+   - brew install tesseract                          # Mac
+   - sudo apt install tesseract-ocr                  # Linux
 
 5. Install Ollama (separate):
-   https://ollama.com/download
+   - https://ollama.com/download
    
 6. Prepare knowledge base:
-   data/pdfs/     - PDF manuals, articles, reports
-   data/text/     - summary notes, definitions
-   data/images/   - screenshots, photographed documents
+   - data/pdfs/     - PDF manuals, articles, reports
+   - data/text/     - summary notes, definitions
+   - data/images/   - screenshots, photographed documents
 
 10. Run indexer, RAG, and RAG Chatbot:
-    Indexer:
-    python index_documents.py
-    - extracts text
-    - chunks documents
-    - encodes embeddings
-    - saves everything into ChromaDB
+    - Indexer:
+    - python index_documents.py
+      - extracts text
+      - chunks documents
+      - encodes embeddings
+      - saves everything into ChromaDB
 
-    RAG Queries:
-    python rag_query.py
-    - gives base LLM answer (no retrieval)
-    - gives RAG answer (with retrieval)
-    - gives top chunks retrieved
+    - RAG Queries:
+    - python rag_query.py
+      - gives base LLM answer (no retrieval)
+      - gives RAG answer (with retrieval)
+      - gives top chunks retrieved
 
-    RAG Chatbot:
-    streamlit run RAG_Chatbot.py
-    - shows input box
-    - shows base LLM answer
-    - shows RAG answer
-    - shows retrieved chunk explorer
+    - RAG Chatbot:
+    - streamlit run RAG_Chatbot.py
+      - shows input box
+      - shows base LLM answer
+      - shows RAG answer
+      - shows retrieved chunk explorer
 
 Example Where RAG Beats Base LLM:
-Question: “What did my buddy say to me when it was my turn to climb?”
-Base LLM: “I don't have any information about what your buddy said.”
-RAG Answer: “ "good luck!" ”
+- Question: “What did my buddy say to me when it was my turn to climb?”
+- Base LLM: “I don't have any information about what your buddy said.”
+- RAG Answer: “ "good luck!" ”
 
 Technologies Used:
 - Python
@@ -103,16 +103,16 @@ Technologies Used:
 - Streamlit
 
 Packages used (see requirements.txt):
-langchain>=0.2.0
-langchain-community>=0.2.0
-langchain-openai>=0.1.0
-langchain-ollama>=0.1.0
-chromadb>=0.4.22
-sentence-transformers>=2.5.2
-huggingface_hub>=0.20.0
-pytesseract
-pillow
-pypdf>=4.0.1
-python-dotenv>=1.0.0
-tiktoken>=0.5.2
-streamlit>=1.29.0
+- langchain>=0.2.0
+- langchain-community>=0.2.0
+- langchain-openai>=0.1.0
+- langchain-ollama>=0.1.0
+- chromadb>=0.4.22
+- sentence-transformers>=2.5.2
+- huggingface_hub>=0.20.0
+- pytesseract
+- pillow
+- pypdf>=4.0.1
+- python-dotenv>=1.0.0
+- tiktoken>=0.5.2
+- streamlit>=1.29.0
