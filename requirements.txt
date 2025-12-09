@@ -1,14 +1,26 @@
+# Core LangChain packages (modern versions)
 langchain>=0.2.0
 langchain-community>=0.2.0
 langchain-openai>=0.1.0
-chromadb==0.4.22
-pypdf==4.0.1
-python-dotenv==1.0.0
-openai==1.6.1
+langchain-ollama>=0.1.0
+
+# Vector database
+chromadb>=0.4.22
+
+# Embeddings (via HuggingFace)
 sentence-transformers>=2.5.2
-huggingface-hub>=0.20.0
-tiktoken==0.5.2
-streamlit==1.29.0
+huggingface_hub>=0.20.0
+
+# OCR (Image → text)
 pytesseract
 pillow
-whisper
+
+# PDF loader
+pypdf>=4.0.1
+
+# Text loading & utilities
+python-dotenv>=1.0.0
+tiktoken>=0.5.2
+
+# UI
+streamlit>=1.29.0
