@@ -1,8 +1,13 @@
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 import os
 from preprocess_loaders import load_pdf, load_text, ocr_image, split_documents
 
 from langchain_community.vectorstores import Chroma
-from langchain.embeddings import SentenceTransformerEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 
 # DIRECTORIES TO INDEX
@@ -55,7 +60,7 @@ def build_chroma_index():
     print(f"Generated {len(chunks)} chunks.")
 
     print("Step 3: Creating embeddings model...")
-    embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+    embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
     print("Step 4: Building Chroma vector database...")
     vectorstore = Chroma.from_documents(
