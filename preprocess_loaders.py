@@ -1,6 +1,6 @@
-from langchain.schema import Document
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.document_loaders import PyPDFLoader, TextLoader
+from langchain_core.documents import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import PyPDFLoader, TextLoader
 
 import pytesseract
 from PIL import Image
@@ -36,7 +36,7 @@ def ocr_image(path):
 
 
 # CHUNKER
-def split_documents(documents, chunk_size=800, chunk_overlap=100):
+def split_documents(documents, chunk_size=500, chunk_overlap=100):
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap

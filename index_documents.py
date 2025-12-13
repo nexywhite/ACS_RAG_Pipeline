@@ -56,7 +56,7 @@ def build_chroma_index():
     print(f"Loaded {len(docs)} raw documents.")
 
     print("Step 2: Splitting into chunks...")
-    chunks = split_documents(docs, chunk_size=800, chunk_overlap=100)
+    chunks = split_documents(docs, chunk_size=500, chunk_overlap=100)
     print(f"Generated {len(chunks)} chunks.")
 
     print("Step 3: Creating embeddings model...")
