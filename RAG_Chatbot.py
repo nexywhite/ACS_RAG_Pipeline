@@ -49,7 +49,7 @@ Answer:
 
 # OLLAMA MODEL
 def get_llm():
-    return ChatOllama(model="llama3.1")   # Change to any model you like
+    return ChatOllama(model="llama3.2:1b", temperature=0.2)   # Change to any model you like
 
 
 # STREAMLIT UI

@@ -4,7 +4,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 import os
-from preprocess_loaders import load_pdf, load_text, ocr_image, split_documents
+from preprocess_loaders import load_pdf, load_text, ocr_image, transcribe_media, split_documents
 
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -14,6 +14,8 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 PDF_DIR = "data/pdfs"
 TEXT_DIR = "data/text"
 IMAGE_DIR = "data/images"
+AUDIO_DIR = "data/audio"
+VIDEO_DIR = "data/video"
 
 # OUTPUT VECTOR DB DIRECTORY
 CHROMA_DIR = "chroma_db"
@@ -45,6 +47,22 @@ def load_all_documents():
                 path = os.path.join(IMAGE_DIR, filename)
                 print(f"Loading image: {path}")
                 all_docs.extend(ocr_image(path))
+    
+    # Load AUDIO
+    if os.path.isdir(AUDIO_DIR):
+        for filename in os.listdir(AUDIO_DIR):
+            if filename.lower().endswith((".mp3", ".wav", ".m4a", ".aac", ".flac", ".ogg")):
+                path = os.path.join(AUDIO_DIR, filename)
+                print(f"Transcribing audio: {path}")
+                all_docs.extend(transcribe_media(path, whisper_model="tiny"))
+    
+    # Load VIDEO
+    if os.path.isdir(VIDEO_DIR):
+        for filename in os.listdir(VIDEO_DIR):
+            if filename.lower().endswith((".mp4", ".mov", ".mkv", ".avi", ".webm")):
+                path = os.path.join(VIDEO_DIR, filename)
+                print(f"Transcribing video: {path}")
+                all_docs.extend(transcribe_media(path, whisper_model="tiny"))
 
     return all_docs
 

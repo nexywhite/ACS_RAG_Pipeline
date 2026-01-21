@@ -25,7 +25,7 @@ Features:
 - OCR support via Tesseract
 - Chunking & semantic embeddings
 - ChromaDB vector storage
-- Local LLM (llama3.1) via Ollama
+- Local LLM (llama3.2:1b) via Ollama
 - Streamlit UI
 - Base vs RAG answer comparison
 
@@ -59,15 +59,22 @@ Installation:
    - brew install tesseract                          # Mac
    - sudo apt install tesseract-ocr                  # Linux
 
-5. Install Ollama (separate):
+5. Install FFmpeg (separate):
+   - winget install Gyan.FFmpeg                      # Windows
+   - brew install ffmpeg                             # Mac
+   - sudo apt install ffmpeg                         # Linux
+
+6. Install Ollama (separate):
    - https://ollama.com/download
    
-6. Prepare knowledge base:
-   - data/pdfs/     - PDF manuals, articles, reports
-   - data/text/     - summary notes, definitions
-   - data/images/   - screenshots, photographed documents
+7. Prepare knowledge base:
+   - data/pdfs/     - PDF documents
+   - data/text/     - TXT / MD files
+   - data/images/   - Images (OCR)
+   - data/audio/    - Audio files (MP3, WAV, etc.)
+   - data/video/    - Video files (MP4, MKV, etc.)
 
-10. Run indexer, RAG, and RAG Chatbot:
+8. Run indexer, RAG, and RAG Chatbot:
     - Indexer:
     - python index_documents.py
       - extracts text
@@ -89,9 +96,9 @@ Installation:
       - shows retrieved chunk explorer
 
 Example Where RAG Beats Base LLM:
-- Question: “What did my buddy say to me when it was my turn to climb?”
-- Base LLM: “I don't have any information about what your buddy said.”
-- RAG Answer: “ "good luck!" ”
+- Question: “What are the opening hours of the Evergreen Public Library?”
+- Base LLM: “I don't have the exact information, but I might guess that it is <hallucination>.”
+- RAG Answer: “The Evergreen Public Library is open Monday-Friday 9AM-7PM and on Saturday 10AM-5PM.”
 
 Technologies Used:
 - Python
@@ -112,7 +119,10 @@ Packages used (see requirements.txt):
 - huggingface_hub>=0.20.0
 - pytesseract
 - pillow
+- subprocess
+- tempfile
 - pypdf>=4.0.1
+- openai-whisper
 - python-dotenv>=1.0.0
 - tiktoken>=0.5.2
 - streamlit>=1.29.0
