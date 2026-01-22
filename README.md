@@ -97,8 +97,9 @@ Installation:
 
 Example Where RAG Beats Base LLM:
 - Question: “What are the opening hours of the Evergreen Public Library?”
-- Base LLM: “I don't have the exact information, but I might guess that it is <hallucination>.”
-- RAG Answer: “The Evergreen Public Library is open Monday-Friday 9AM-7PM and on Saturday 10AM-5PM.”
+- Base LLM: “I'm not aware of any specific information about an "Evergreen Public Library".”
+- RAG Answer: “According to the context, the opening hours of the Evergreen Public Library are:
+               Monday – Friday: 9:00 AM – 7:00 PM Saturday: 10:00 AM – 5:00 PM Sunday: Closed.”
 
 Technologies Used:
 - Python

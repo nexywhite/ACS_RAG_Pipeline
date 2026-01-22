@@ -54,7 +54,7 @@ def get_llm():
 
 # STREAMLIT UI
 def main():
-    st.title("RAG Chatbot (PDF + Text + Image OCR)")
+    st.title("RAG Chatbot (PDF + Text + Image OCR + Audio + Video)")
     st.write("Ask a question and compare Base LLM vs RAG results.")
 
     question = st.text_input("Enter your question:")
