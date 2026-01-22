@@ -23,5 +23,8 @@ pypdf>=4.0.1
 python-dotenv>=1.0.0
 tiktoken>=0.5.2
 
+# Audio transcription
+whisper>=20230606
+
 # UI
 streamlit>=1.29.0
