@@ -108,6 +108,8 @@ Technologies Used:
 - ChromaDB
 - Sentence Transformers
 - Tesseract OCR
+- FFmpeg
+- Whisper (OpenAI)
 - Streamlit
 
 Packages used (see requirements.txt):
